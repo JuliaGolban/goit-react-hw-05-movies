@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+**Read in other languages: [English](README.en.md), [Українська](README.md).**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Підготовка проекту
 
-## Available Scripts
+1. Встановлено LTS-версію Node.js.
+2. Проект створено за допомогою
+   [Create React App](https://github.com/facebook/create-react-app). Для
+   ознайомлення та налаштування додаткових можливостей
+   [зверніться до документації](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Встановлено базові залежності проекту командою `npm install`.
+4. Запуск режиму розробки виконується командою `npm start`.
+5. Сторінка в браузері за адресою
+   [http://localhost:3000](http://localhost:3000).
 
-In the project directory, you can run:
+# Критерії приймання
 
-### `npm start`
+- Створено репозиторій `goit-react-hw-05-movies`.
+- При здачі домашньої роботи є два посилання: на вихідні файли та робочу
+  сторінку завдання на `GitHub Pages`.
+- У стані компонентів зберігається мінімально необхідний набір даних, решта
+  обчислюється.
+- Під час запуску коду завдання в консолі відсутні помилки та попередження.
+- Для кожного компонента є окрема папка з файлом React-компонента та файлом
+  стилів.
+- Для компонентів описані `propTypes`.
+- Все, що компонент очікує у вигляді пропсів, передається йому під час виклику.
+- Імена компонентів зрозумілі та описові
+- JS-код чистий і зрозумілий, використовується `Prettier`.
+- Стилізація виконана `CSS-модулями` або `Styled Components`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Кінопошук
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Створи базову маршрутизацію для застосунку пошуку і зберігання фільмів. Прев'ю
+робочого застосунку
+[дивись за посиланням](https://drive.google.com/file/d/1vR0hi3n1236Q5Bg4-se-8JVKD9UKSfId/view?usp=sharing).
 
-### `npm test`
+### themoviedb.org API
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Для бекенду використовуй [themoviedb.org API](https://www.themoviedb.org/).
+Необхідно зареєструватися (можна ввести довільні дані) та отримати API-ключ. У
+цій роботі будуть використовуватися наступні ендпоінти.
 
-### `npm run build`
+- [/trending/get-trending](https://developers.themoviedb.org/3/trending/get-trending)
+  список найпопулярніших фільмів на сьогодні для створення колекції на головній
+  сторінці.
+- [/search/search-movies](https://developers.themoviedb.org/3/search/search-movies)
+  пошук фільму за ключовим словом на сторінці фільмів.
+- [/movies/get-movie-details](https://developers.themoviedb.org/3/movies/get-movie-details)
+  запит повної інформації про фільм для сторінки кінофільму.
+- [/movies/get-movie-credits](https://developers.themoviedb.org/3/movies/get-movie-credits)
+  запит інформації про акторський склад для сторінки кінофільму.
+- [/movies/get-movie-reviews](https://developers.themoviedb.org/3/movies/get-movie-reviews)
+  запит оглядів для сторінки кінофільму.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Посилання на документацію](https://developers.themoviedb.org/3/getting-started/introduction)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Маршрути
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+У застосунку повинні бути такі маршрути. Якщо користувач зайшов за неіснуючим
+маршрутом, його необхідно перенаправляти на домашню сторінку.
 
-### `npm run eject`
+- `'/'` – компонент `Home`, домашня сторінка зі списком популярних кінофільмів.
+- `'/movies'` – компонент `Movies`, сторінка пошуку кінофільмів за ключовим
+  словом.
+- `'/movies/:movieId'` – компонент `MovieDetails`, сторінка з детальною
+  інформацією про кінофільм.
+- `'/movies/:movieId/cast'` – компонент `Cast`, інформація про акторський склад.
+  Рендериться на сторінці `MovieDetails`.
+- `'/movies/:movieId/reviews'` – компонент `Reviews`, інформація про огляди.
+  Рендериться на сторінці `MovieDetails`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Code Splitting (поділ коду)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Додай асинхронне завантаження JS-коду для маршрутів застосунку, використовуючи
+`React.lazy()` і `Suspense`.
