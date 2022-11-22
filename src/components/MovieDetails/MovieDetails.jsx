@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { Link, Outlet } from 'react-router-dom';
 import { fetchDataByID } from 'services/APIservice';
 // import { fetchData } from 'services/APIservice';
+import NotiflixLoading from '../../helpers/Loader/NotiflixLoading';
 import {
   Container,
   Box,
@@ -13,6 +14,8 @@ import {
   SubTitle,
   Description,
 } from './MovieDetails.styled';
+
+const loader = new NotiflixLoading();
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -81,7 +84,9 @@ export const MovieDetails = () => {
               <Link to="reviews">Reviews</Link>
             </li>
           </ul>
-          <Outlet />
+          <Suspense fallback={loader.onLoading()}>
+            <Outlet />
+          </Suspense>
         </Container>
       </main>
     )
