@@ -25,7 +25,7 @@ export const MovieDetails = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/movies';
 
-  const pathParams = `movies/${movieId}`;
+  // const pathParams = `movies/${movieId}`;
   // const ID = Number(movieId);
   // const pathParams = `movies/${ID}`;
 
@@ -40,7 +40,7 @@ export const MovieDetails = () => {
       }
     }
     getData();
-  }, [movieId, pathParams]);
+  }, [movieId]);
 
   if (!movie) {
     return null;
