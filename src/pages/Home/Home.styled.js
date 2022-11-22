@@ -5,10 +5,10 @@ const Section = styled.section`
 `;
 
 const Title = styled.h1`
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 500;
   margin-left: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   color: rgb(0, 0, 0);
 `;
 

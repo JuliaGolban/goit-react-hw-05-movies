@@ -4,13 +4,14 @@ import { GoBack } from './BackLink.styled';
 
 export const BackButton = ({ children }) => {
   const { state } = useLocation();
+  const backLinkHref = state?.from ?? '/movies';
 
   if (!state?.from) {
     return null;
   }
 
   return (
-    <GoBack to={state.from}>
+    <GoBack to={backLinkHref}>
       <HiArrowLeft size="10" />
       {children}
     </GoBack>

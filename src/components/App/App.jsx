@@ -1,12 +1,17 @@
-import { lazy } from 'react';
+// import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { AppBar } from 'components/AppBar/AppBar';
 import { Home } from 'pages/Home/Home';
 import { Movies } from 'pages/Movies/Movies';
+import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 import { Cast } from 'components/Cast/Cast';
 import { Reviews } from 'components/Reviews/Reviews';
 
-const MovieDetails = lazy(() => import('../MovieDetails/MovieDetails'));
+// const Home = lazy(() => import('../Home/Home'));
+// const Movies = lazy(() => import('../Movies/Movies'));
+// const MovieDetails = lazy(() => import('../MovieDetails/MovieDetails'));
+// const Cast = lazy(() => import('../Cast/Cast'));
+// const Reviews = lazy(() => import('../Reviews/Reviews'));
 
 export const App = () => {
   return (
@@ -14,11 +19,11 @@ export const App = () => {
       <Route path="/" element={<AppBar />}>
         <Route index element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies:movieId" element={<MovieDetails />}>
+        <Route path="/movies/:movieId" element={<MovieDetails />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="*" element={<AppBar />} />
+        <Route path="*" element={<Home />} />
       </Route>
     </Routes>
   );

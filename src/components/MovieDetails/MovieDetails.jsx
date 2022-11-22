@@ -1,38 +1,26 @@
+import { BackButton } from 'components/BackLink/BackLink';
 import { useState, useEffect, Suspense } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Link, Outlet } from 'react-router-dom';
 import { fetchDataByID } from 'services/APIservice';
-// import { fetchData } from 'services/APIservice';
-import NotiflixLoading from '../../helpers/Loader/NotiflixLoading';
 import {
   Container,
   Box,
   Image,
   InfoWrapper,
-  GoBack,
   Title,
   SubTitle,
   Description,
 } from './MovieDetails.styled';
-
-const loader = new NotiflixLoading();
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
 
-  const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
-
-  // const pathParams = `movies/${movieId}`;
-  // const ID = Number(movieId);
-  // const pathParams = `movies/${ID}`;
-
   useEffect(() => {
     async function getData() {
       try {
-        // const { data } = await fetchData(pathParams);
         const { data } = await fetchDataByID(movieId);
         setMovie(data);
       } catch (error) {
@@ -46,27 +34,41 @@ export const MovieDetails = () => {
     return null;
   }
 
-  const { id, release_date, poster_path, title, popularity, genres, overview } =
-    movie;
+  const {
+    id,
+    release_date,
+    poster_path,
+    title,
+    popularity,
+    vote_average,
+    genres,
+    overview,
+  } = movie;
 
   let year = release_date.slice(0, 4);
-  let path = poster_path
-    ? `https://image.tmdb.org/t/p/w500${poster_path}`
-    : 'https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj';
-  let userScore = popularity * 100;
-  let name = [...genres.name].join(', ');
+  let { name } = [genres.name];
   return (
     !error && (
       <main>
         <Container>
-          <GoBack to={backLinkHref} />
+          <BackButton children="Go back" />
           <Box key={id}>
-            <Image src={path} alt={title} loading="lazy" />
+            <Image
+              src={
+                poster_path
+                  ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                  : 'https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj'
+              }
+              alt={title}
+              width="360"
+              loading="lazy"
+            />
             <InfoWrapper>
               <Title>
                 {title} ({year})
               </Title>
-              <Description>User Score: {userScore}%</Description>
+              <Description>Vote average: {vote_average}</Description>
+              <Description>Popularity: {Math.floor(popularity)}</Description>
               <SubTitle>Overview</SubTitle>
               <Description>{overview}</Description>
               <SubTitle>Genres</SubTitle>
@@ -84,7 +86,7 @@ export const MovieDetails = () => {
               <Link to="reviews">Reviews</Link>
             </li>
           </ul>
-          <Suspense fallback={loader.onLoading()}>
+          <Suspense fallback={null}>
             <Outlet />
           </Suspense>
         </Container>

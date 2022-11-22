@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { fetchData } from 'services/APIservice';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { MoviesList } from 'components/MoviesList/MoviesList';
@@ -15,6 +16,8 @@ export const Movies = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') ?? '';
   const pathParams = `search/movie?query=${searchQuery}`;
 
   useEffect(() => {
@@ -43,6 +46,12 @@ export const Movies = () => {
   const handleFormSubmit = searchQuery => {
     reset();
     setSearchQuery(searchQuery);
+    updateQueryString(searchQuery);
+  };
+
+  const updateQueryString = query => {
+    const nextParams = query !== '' ? { query } : {};
+    setSearchParams(nextParams);
   };
 
   const reset = () => {
