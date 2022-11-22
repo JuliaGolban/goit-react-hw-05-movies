@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { Link, Outlet } from 'react-router-dom';
-import { fetchData } from 'services/APIservice';
+import { fetchDataByID } from 'services/APIservice';
+// import { fetchData } from 'services/APIservice';
 import {
   Container,
   Box,
@@ -28,8 +29,9 @@ export const MovieDetails = () => {
   useEffect(() => {
     async function getData() {
       try {
-        const { data } = await fetchData(pathParams);
-        setMovie(data.results);
+        // const { data } = await fetchData(pathParams);
+        const { data } = await fetchDataByID(movieId);
+        setMovie(data);
       } catch (error) {
         setError(error);
       }

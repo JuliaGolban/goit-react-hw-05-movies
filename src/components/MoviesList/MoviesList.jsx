@@ -9,7 +9,7 @@ export const MoviesList = ({ movies }) => {
       {movies.map(movie => (
         <Item key={movie.id}>
           <BsFillTrophyFill size={10} />
-          <StyledLink to={`${movie.id}`} state={{ from: location }}>
+          <StyledLink to={`movies/${movie.id}`} state={{ from: location }}>
             {movie.title}
           </StyledLink>
         </Item>

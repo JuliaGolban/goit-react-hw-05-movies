@@ -24,17 +24,22 @@ async function fetchData(pathParams) {
   return await axiosInstance.get();
 }
 
-// function fetchSearchMovies({ searchQuery }) {
-//   const pathParams = 'search/movie';
-//   const queryParams = new URLSearchParams({
-//     key: API_KEY,
-//     query: searchQuery,
-//   });
-//   return axios.get(`${pathParams}?${queryParams}`);
-// }
+function fetchDataByID({ id, path }) {
+  const pathURL = path ? `movie/${id}/${path}` : '';
+  const pathParams = `movie/${id}${pathURL}`;
+  const queryParams = new URLSearchParams({
+    api_key: API_KEY,
+  });
+  return axios.get(`${pathParams}?${queryParams}`);
+}
 
 fetchData.propTypes = {
   pathParams: PropTypes.string.isRequired,
 };
 
-export { fetchData };
+fetchDataByID.propTypes = {
+  id: PropTypes.string.isRequired,
+  path: PropTypes.string,
+};
+
+export { fetchData, fetchDataByID };
