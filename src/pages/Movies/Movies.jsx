@@ -5,7 +5,8 @@ import { Searchbar } from 'components/Searchbar/Searchbar';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import NotiflixLoading from '../../helpers/Loader/NotiflixLoading';
 import NotifyMessages from '../../helpers/Messages/NotifyMessages';
-import { Section, Title } from './Movies.styled';
+import { Container } from 'components/base/Container.styled';
+import { MoviesSection, Title } from './Movies.styled';
 
 const notify = new NotifyMessages();
 const loader = new NotiflixLoading();
@@ -61,11 +62,15 @@ export const Movies = () => {
   };
 
   return (
-    <Section>
-      <Searchbar onSubmit={handleFormSubmit} />
-      {isLoading ? loader.onLoading() : loader.onLoaded()}
-      {movies.length !== 0 && !error && <MoviesList movies={movies} />}
-      {error && <Title> Whoops, something went wrong</Title>}
-    </Section>
+    <main>
+      <Container>
+        <MoviesSection>
+          <Searchbar onSubmit={handleFormSubmit} />
+          {isLoading ? loader.onLoading() : loader.onLoaded()}
+          {movies.length !== 0 && !error && <MoviesList movies={movies} />}
+          {error && <Title> Whoops, something went wrong</Title>}
+        </MoviesSection>
+      </Container>
+    </main>
   );
 };

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
+import { Section } from 'components/base/Section.styled';
 
-const Section = styled.section`
+const MoviesSection = styled(Section)`
   display: inline-grid;
   gap: 30px;
-  padding: 30px 50px;
 `;
 
 const Title = styled.h1`
@@ -12,4 +12,4 @@ const Title = styled.h1`
   color: rgb(0, 0, 0);
 `;
 
-export { Section, Title };
+export { MoviesSection, Title };

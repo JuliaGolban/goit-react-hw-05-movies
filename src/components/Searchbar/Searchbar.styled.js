@@ -4,17 +4,21 @@ const SearchForm = styled.form`
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 600px;
+  max-width: 320px;
   background-color: transparent;
+
+  @media screen and (min-width: 768px) {
+    max-width: 600px;
+  }
 `;
 
 const SearchInput = styled.input`
   display: inline-block;
   width: 100%;
-  min-width: 240px;
+  min-width: 200px;
   padding: 6px 10px;
   font: inherit;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.33;
   outline: none;
 
@@ -24,6 +28,11 @@ const SearchInput = styled.input`
 
   ::placeholder {
     font: inherit;
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 768px) {
+    max-width: 240px;
     font-size: 16px;
   }
 
@@ -38,14 +47,14 @@ const SearchInput = styled.input`
 const SearchBtn = styled.button`
   display: inline-block;
   text-align: center;
-  width: 150px;
+  width: 50px;
   margin: 0 auto;
   padding: 6px;
 
   font-family: inherit;
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.33;
 
   color: rgba(42, 42, 42, 0.5);
@@ -58,6 +67,11 @@ const SearchBtn = styled.button`
 
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    max-width: 150px;
+    font-size: 16px;
+  }
 
   :hover,
   :focus {

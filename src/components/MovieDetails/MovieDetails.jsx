@@ -1,16 +1,20 @@
-import { BackButton } from 'components/BackLink/BackLink';
 import { useState, useEffect, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { fetchDataByID } from 'services/APIservice';
+import { BackButton } from 'components/BackLink/BackLink';
 import {
-  Container,
-  Box,
+  MovieContainer,
+  BoxDetails,
+  BoxAdditional,
   Image,
   InfoWrapper,
   Title,
   SubTitle,
   Description,
+  Count,
+  List,
+  Item,
 } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
@@ -41,6 +45,7 @@ export const MovieDetails = () => {
     title,
     popularity,
     vote_average,
+    vote_count,
     genres,
     overview,
   } = movie;
@@ -50,9 +55,9 @@ export const MovieDetails = () => {
   return (
     !error && (
       <main>
-        <Container>
+        <MovieContainer>
           <BackButton children="Go back" />
-          <Box key={id}>
+          <BoxDetails key={id}>
             <Image
               src={
                 poster_path
@@ -60,36 +65,42 @@ export const MovieDetails = () => {
                   : 'https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj'
               }
               alt={title}
-              width="360"
+              width="240"
+              height="360"
               loading="lazy"
             />
             <InfoWrapper>
               <Title>
                 {title} ({year})
               </Title>
-              <Description>Vote average: {vote_average}</Description>
-              <Description>Popularity: {Math.floor(popularity)}</Description>
+              <SubTitle>
+                Vote / Votes:
+                <Count>
+                  {vote_average.toFixed(1)} / {vote_count}
+                </Count>
+              </SubTitle>
+              <SubTitle>
+                Popularity:
+                <Count>{Math.floor(popularity).toLocaleString('ru')}</Count>
+              </SubTitle>
               <SubTitle>Overview</SubTitle>
               <Description>{overview}</Description>
               <SubTitle>Genres</SubTitle>
               <Description>{name}</Description>
+
+              <SubTitle>Additional information</SubTitle>
+              <List>
+                <Item to="cast">Cast</Item>
+                <Item to="reviews">Reviews</Item>
+              </List>
             </InfoWrapper>
-          </Box>
-        </Container>
-        <Container>
-          <Description>Additional information</Description>
-          <ul>
-            <li>
-              <Link to="cast">Cast</Link>
-            </li>
-            <li>
-              <Link to="reviews">Reviews</Link>
-            </li>
-          </ul>
-          <Suspense fallback={null}>
-            <Outlet />
-          </Suspense>
-        </Container>
+          </BoxDetails>
+          <BoxAdditional>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Outlet />
+            </Suspense>
+          </BoxAdditional>
+        </MovieContainer>
       </main>
     )
   );

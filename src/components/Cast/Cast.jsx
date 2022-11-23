@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchDataByID } from 'services/APIservice';
-import { List, Item, Image, Name, Content } from './Cast.styled';
+import { List, Item, Image, TextWrapper, Name, Content } from './Cast.styled';
 
 export const Cast = () => {
   const { movieId } = useParams();
@@ -21,6 +21,10 @@ export const Cast = () => {
     getData();
   }, [movieId]);
 
+  if (!cast) {
+    return null;
+  }
+
   return (
     <List key={movieId}>
       {error && <p>We don't have a cast for this movie</p>}
@@ -34,9 +38,12 @@ export const Cast = () => {
             }
             alt={name}
             width="100"
+            height="160"
           />
-          <Name>{name}</Name>
-          <Content>Character: {character}</Content>
+          <TextWrapper>
+            <Name>{name}</Name>
+            <Content>Character: {character}</Content>
+          </TextWrapper>
         </Item>
       ))}
     </List>

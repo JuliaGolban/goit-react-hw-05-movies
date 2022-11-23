@@ -6,9 +6,9 @@ export const BackButton = ({ children }) => {
   const { state } = useLocation();
   const backLinkHref = state?.from ?? '/movies';
 
-  if (!state?.from) {
-    return null;
-  }
+  // if (!state?.from) {
+  //   return null;
+  // }
 
   return (
     <GoBack to={backLinkHref}>

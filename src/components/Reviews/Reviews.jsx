@@ -21,12 +21,16 @@ export const Reviews = () => {
     getData();
   }, [movieId]);
 
+  if (!reviews) {
+    return null;
+  }
+
   return (
     <List key={movieId}>
       {error && <p>We don't have any reviews for this movie</p>}
       {reviews.map(({ id, author, content }) => (
         <Item key={id}>
-          <Name>{author}</Name>
+          <Name>Author: {author}</Name>
           <Content>{content}</Content>
         </Item>
       ))}

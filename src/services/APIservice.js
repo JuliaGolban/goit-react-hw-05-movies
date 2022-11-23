@@ -25,7 +25,7 @@ async function fetchData(pathParams) {
 }
 
 async function fetchDataByID(id, path) {
-  const pathURL = path ? `${path}` : '';
+  const pathURL = path ? `/${path}` : '';
   const pathParams = `movie/${id}${pathURL}`;
   const axiosInstance = axios.create({
     baseURL: `${BASE_URL}${pathParams}`,

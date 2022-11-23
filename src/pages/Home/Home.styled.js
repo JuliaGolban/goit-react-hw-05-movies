@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 
-const Section = styled.section`
-  padding: 30px 50px;
-`;
-
 const Title = styled.h1`
   font-size: 30px;
   font-weight: 500;
@@ -12,4 +8,4 @@ const Title = styled.h1`
   color: rgb(0, 0, 0);
 `;
 
-export { Section, Title };
+export { Title };
