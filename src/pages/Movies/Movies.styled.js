@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import { Section } from 'components/base/Section.styled';
+import { Container } from 'components/base/Container.styled';
+
+const MoviesContainer = styled(Container)`
+  margin: 0 auto;
+`;
 
 const MoviesSection = styled(Section)`
-  display: inline-grid;
   gap: 30px;
 `;
 
@@ -12,4 +16,4 @@ const Title = styled.h1`
   color: rgb(0, 0, 0);
 `;
 
-export { MoviesSection, Title };
+export { MoviesContainer, MoviesSection, Title };

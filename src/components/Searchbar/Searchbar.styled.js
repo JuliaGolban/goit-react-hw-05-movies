@@ -3,26 +3,29 @@ import styled from 'styled-components';
 const SearchForm = styled.form`
   display: flex;
   align-items: center;
+  margin: 20px auto;
   width: 100%;
-  max-width: 320px;
+  max-width: 300px;
   background-color: transparent;
 
   @media screen and (min-width: 768px) {
-    max-width: 600px;
+    max-width: 400px;
   }
 `;
 
 const SearchInput = styled.input`
   display: inline-block;
   width: 100%;
-  min-width: 200px;
+  width: 200px;
   padding: 6px 10px;
+
   font: inherit;
   font-size: 14px;
   line-height: 1.33;
   outline: none;
 
   border: none;
+  border-radius: 4px;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 
@@ -32,7 +35,7 @@ const SearchInput = styled.input`
   }
 
   @media screen and (min-width: 768px) {
-    max-width: 240px;
+    width: 300px;
     font-size: 16px;
   }
 
@@ -47,8 +50,7 @@ const SearchInput = styled.input`
 const SearchBtn = styled.button`
   display: inline-block;
   text-align: center;
-  width: 50px;
-  margin: 0 auto;
+  width: 70px;
   padding: 6px;
 
   font-family: inherit;
@@ -62,6 +64,7 @@ const SearchBtn = styled.button`
 
   text-decoration: none;
   border: 0;
+  border-radius: 4px;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 
@@ -69,7 +72,7 @@ const SearchBtn = styled.button`
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
-    max-width: 150px;
+    max-width: 100px;
     font-size: 16px;
   }
 

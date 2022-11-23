@@ -12,8 +12,6 @@ const List = styled.ul`
 
   @media screen and (min-width: 768px) {
     display: grid;
-    grid-auto-rows: 180px;
-    grid-gap: 15px;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-auto-rows: auto;
     grid-gap: 20px;

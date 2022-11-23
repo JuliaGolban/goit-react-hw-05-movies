@@ -6,7 +6,7 @@ import { HeaderContainer, Header, Nav, Link } from './AppBar.styled';
 export const AppBar = () => {
   return (
     <>
-      <Header>
+      <Header id="header">
         <HeaderContainer>
           <Nav>
             <Link to="/">

@@ -22,6 +22,10 @@ export const Home = () => {
     getData();
   }, [trends]);
 
+  if (!trends) {
+    return null;
+  }
+
   return (
     <main>
       <Container>
