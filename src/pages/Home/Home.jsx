@@ -5,7 +5,7 @@ import { Container } from 'components/base/Container.styled';
 import { Section } from 'components/base/Section.styled';
 import { Title } from './Home.styled';
 
-export const Home = () => {
+const Home = () => {
   const [trends, setTrends] = useState([]);
   const [error, setError] = useState(null);
   const pathParams = 'trending/movie/day';
@@ -20,7 +20,7 @@ export const Home = () => {
       }
     }
     getData();
-  }, [trends]);
+  }, []);
 
   if (!trends) {
     return null;
@@ -43,3 +43,5 @@ export const Home = () => {
     </main>
   );
 };
+
+export default Home;

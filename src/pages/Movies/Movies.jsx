@@ -11,15 +11,14 @@ import { MoviesContainer, MoviesSection, Title } from './Movies.styled';
 const notify = new NotifyMessages();
 const loader = new NotiflixLoading();
 
-export const Movies = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+const Movies = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query') ?? '';
+  const pathParams = `search/movie?query=${searchQuery}`;
+
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query') ?? '';
-  const pathParams = `search/movie?query=${searchQuery}`;
 
   useEffect(() => {
     if (searchQuery === '') return;
@@ -46,7 +45,6 @@ export const Movies = () => {
 
   const handleFormSubmit = searchQuery => {
     reset();
-    setSearchQuery(searchQuery);
     updateQueryString(searchQuery);
   };
 
@@ -56,7 +54,7 @@ export const Movies = () => {
   };
 
   const reset = () => {
-    setSearchQuery('');
+    setSearchParams('');
     setError(null);
     setIsLoading(false);
   };
@@ -74,3 +72,5 @@ export const Movies = () => {
     </main>
   );
 };
+
+export default Movies;
