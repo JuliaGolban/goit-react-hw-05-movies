@@ -48,9 +48,8 @@ const Item = styled.li`
 
 const Image = styled.img`
   display: block;
-  width: 100px;
+  width: 100%;
   height: 100%;
-  background-color: darkgray;
 
   @media screen and (min-width: 320px) {
     width: 150px;

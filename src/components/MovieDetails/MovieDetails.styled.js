@@ -58,7 +58,7 @@ const Image = styled.img`
   }
 
   @media screen and (min-width: 768px) {
-    max-width: 240px;
+    max-width: 320px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -99,16 +99,18 @@ const SubTitle = styled.h2`
 `;
 
 const Description = styled.p`
-  font-size: 10px;
-  font-weight: 400;
-  line-height: 1.33;
   max-height: 250px;
   max-width: 270px;
   overflow-y: auto;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.33;
+  margin-top: -5px;
 
   @media screen and (min-width: 768px) {
-    font-size: 14px;
     max-width: 240px;
+    font-size: 14px;
+    margin-top: -10px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -140,9 +142,9 @@ const Item = styled(NavLink)`
   display: flex;
   align-content: center;
   align-items: center;
-  padding: 8px;
+  padding: 6px;
 
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
   text-decoration: none;
   color: rgb(0, 0, 0);
@@ -154,6 +156,12 @@ const Item = styled(NavLink)`
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
+    padding: 7px;
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    padding: 8px;
     font-size: 18px;
   }
 

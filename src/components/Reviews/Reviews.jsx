@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { fetchDataByID } from 'services/APIservice';
 import { List, Item, Name, Content } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
@@ -47,3 +47,5 @@ Reviews.propTypes = {
     })
   ),
 };
+
+export default Reviews;

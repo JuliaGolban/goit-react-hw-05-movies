@@ -1,6 +1,5 @@
 import { useState, useEffect, Suspense } from 'react';
-import { useParams } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { fetchDataByID } from 'services/APIservice';
 import { BackButton } from 'components/BackLink/BackLink';
 import {
@@ -17,10 +16,13 @@ import {
   Item,
 } from './MovieDetails.styled';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
+
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/movies';
 
   useEffect(() => {
     async function getData() {
@@ -50,13 +52,11 @@ export const MovieDetails = () => {
     overview,
   } = movie;
 
-  let year = release_date.slice(0, 4);
-  let { name } = [genres.name];
   return (
     !error && (
       <main>
         <MovieContainer>
-          <BackButton children="Go back" />
+          <BackButton to={backLinkHref}>Go back</BackButton>
           <BoxDetails key={id}>
             <Image
               src={
@@ -71,12 +71,12 @@ export const MovieDetails = () => {
             />
             <InfoWrapper>
               <Title>
-                {title} ({year})
+                {title} {release_date.slice(0, 4)}
               </Title>
               <SubTitle>
                 Vote / Votes:
                 <Count>
-                  {vote_average.toFixed(1)} / {vote_count}
+                  {vote_average.toFixed(2)} / {vote_count}
                 </Count>
               </SubTitle>
               <SubTitle>
@@ -86,7 +86,13 @@ export const MovieDetails = () => {
               <SubTitle>Overview</SubTitle>
               <Description>{overview}</Description>
               <SubTitle>Genres</SubTitle>
-              <Description>{name}</Description>
+              <Description>
+                {genres
+                  .map(({ name }) => {
+                    return name;
+                  })
+                  .join(', ')}
+              </Description>
 
               <SubTitle>Additional information</SubTitle>
               <List>
@@ -105,3 +111,5 @@ export const MovieDetails = () => {
     )
   );
 };
+
+export default MovieDetails;

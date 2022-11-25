@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { fetchDataByID } from 'services/APIservice';
 import { List, Item, Image, TextWrapper, Name, Content } from './Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
   const [error, setError] = useState(null);
@@ -34,7 +34,7 @@ export const Cast = () => {
             src={
               profile_path
                 ? `https://image.tmdb.org/t/p/w500${profile_path}`
-                : 'https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj'
+                : 'https://pixabay.com/get/g8c1138565a78b547fa71678d08f599cbaad4f3a19cb4a9df05343dd74a430e66f1d6e0dcd85e02eaf38e9fe1eea19105cf39824c34461c1b1500882c40d32d2d_1280.jpg'
             }
             alt={name}
             width="100"
@@ -60,3 +60,5 @@ Cast.propTypes = {
     })
   ),
 };
+
+export default Cast;
