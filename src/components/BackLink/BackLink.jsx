@@ -1,17 +1,9 @@
-import { useLocation } from 'react-router-dom';
 import { HiArrowLeft } from 'react-icons/hi';
 import { GoBack } from './BackLink.styled';
 
-export const BackButton = ({ children }) => {
-  const { state } = useLocation();
-  const backLinkHref = state?.from ?? '/movies';
-
-  // if (!state?.from) {
-  //   return null;
-  // }
-
+export const BackButton = ({ to, children }) => {
   return (
-    <GoBack to={backLinkHref}>
+    <GoBack to={to}>
       <HiArrowLeft size="10" />
       {children}
     </GoBack>
