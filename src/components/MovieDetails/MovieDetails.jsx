@@ -1,7 +1,7 @@
-import { useState, useEffect, Suspense } from 'react';
-import { useParams, useLocation, Outlet } from 'react-router-dom';
-import { fetchDataByID } from 'services/APIservice';
-import { BackButton } from 'components/BackLink/BackLink';
+import { useState, useEffect, Suspense } from "react";
+import { useParams, useLocation, Outlet } from "react-router-dom";
+import { fetchDataByID } from "services/APIservice";
+import { BackButton } from "components/BackLink/BackLink";
 import {
   MovieContainer,
   BoxDetails,
@@ -14,7 +14,7 @@ import {
   Count,
   List,
   ItemLink,
-} from './MovieDetails.styled';
+} from "./MovieDetails.styled";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -22,7 +22,7 @@ const MovieDetails = () => {
   const [error, setError] = useState(null);
 
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/movies';
+  const backLinkHref = location.state?.from ?? "movies";
 
   useEffect(() => {
     async function getData() {
@@ -53,7 +53,7 @@ const MovieDetails = () => {
   } = movie;
 
   const imgDefault =
-    'https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj';
+    "https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj";
 
   return (
     !error && (
@@ -84,7 +84,7 @@ const MovieDetails = () => {
               </SubTitle>
               <SubTitle>
                 Popularity:
-                <Count>{Math.floor(popularity).toLocaleString('ru')}</Count>
+                <Count>{Math.floor(popularity).toLocaleString("ru")}</Count>
               </SubTitle>
               <SubTitle>Overview</SubTitle>
               <Description>{overview}</Description>
@@ -94,7 +94,7 @@ const MovieDetails = () => {
                   .map(({ name }) => {
                     return name;
                   })
-                  .join(', ')}
+                  .join(", ")}
               </Description>
 
               <SubTitle>Additional information</SubTitle>
