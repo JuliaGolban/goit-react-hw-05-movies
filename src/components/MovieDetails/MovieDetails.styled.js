@@ -138,7 +138,7 @@ const List = styled.ul`
   gap: 20px;
 `;
 
-const Item = styled(NavLink)`
+const ItemLink = styled(NavLink)`
   display: flex;
   align-content: center;
   align-items: center;
@@ -188,5 +188,5 @@ export {
   Description,
   Count,
   List,
-  Item,
+  ItemLink,
 };

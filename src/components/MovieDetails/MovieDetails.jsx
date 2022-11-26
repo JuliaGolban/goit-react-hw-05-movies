@@ -13,7 +13,7 @@ import {
   Description,
   Count,
   List,
-  Item,
+  ItemLink,
 } from './MovieDetails.styled';
 
 const MovieDetails = () => {
@@ -52,6 +52,9 @@ const MovieDetails = () => {
     overview,
   } = movie;
 
+  const imgDefault =
+    'https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj';
+
   return (
     !error && (
       <main>
@@ -62,7 +65,7 @@ const MovieDetails = () => {
               src={
                 poster_path
                   ? `https://image.tmdb.org/t/p/w500${poster_path}`
-                  : 'https://yt3.ggpht.com/AAKF_677TIvjFz_9xFF0R6PgiVd0kRpEtY6APSxSDRP65nXg8hkn9NFsz2bRd9_Z37DJ9D_b=s900-c-k-c0x00ffffff-no-rj'
+                  : { imgDefault }
               }
               alt={title}
               width="240"
@@ -96,8 +99,8 @@ const MovieDetails = () => {
 
               <SubTitle>Additional information</SubTitle>
               <List>
-                <Item to="cast">Cast</Item>
-                <Item to="reviews">Reviews</Item>
+                <ItemLink to="cast">Cast</ItemLink>
+                <ItemLink to="reviews">Reviews</ItemLink>
               </List>
             </InfoWrapper>
           </BoxDetails>

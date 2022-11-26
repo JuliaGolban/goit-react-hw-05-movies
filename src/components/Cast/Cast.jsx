@@ -25,16 +25,18 @@ const Cast = () => {
     return null;
   }
 
+  const imgDefault =
+    'https://pixabay.com/get/g8c1138565a78b547fa71678d08f599cbaad4f3a19cb4a9df05343dd74a430e66f1d6e0dcd85e02eaf38e9fe1eea19105cf39824c34461c1b1500882c40d32d2d_1280.jpg';
   return (
     <List key={movieId}>
-      {error && <p>We don't have a cast for this movie</p>}
+      {cast.length !== 0 && error && <p>We don't have a cast for this movie</p>}
       {cast.map(({ id, name, character, profile_path }) => (
         <Item key={id}>
           <Image
             src={
               profile_path
                 ? `https://image.tmdb.org/t/p/w500${profile_path}`
-                : 'https://pixabay.com/get/g8c1138565a78b547fa71678d08f599cbaad4f3a19cb4a9df05343dd74a430e66f1d6e0dcd85e02eaf38e9fe1eea19105cf39824c34461c1b1500882c40d32d2d_1280.jpg'
+                : { imgDefault }
             }
             alt={name}
             width="100"
