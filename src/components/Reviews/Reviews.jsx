@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { fetchDataByID } from 'services/APIservice';
-import { List, Item, Name, Content } from './Reviews.styled';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import PropTypes from "prop-types";
+import { fetchDataByID } from "services/APIservice";
+import { List, Item, Name, Content } from "./Reviews.styled";
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -12,7 +12,7 @@ const Reviews = () => {
   useEffect(() => {
     async function getData() {
       try {
-        const { data } = await fetchDataByID(movieId, 'reviews');
+        const { data } = await fetchDataByID(movieId, "reviews");
         setReviews(data.results);
       } catch (error) {
         setError(error);
@@ -26,17 +26,21 @@ const Reviews = () => {
   }
 
   return (
-    <List key={movieId}>
-      {reviews.length === 0 && error && (
-        <p>We don't have any reviews for this movie</p>
+    <>
+      {reviews.length === 0 && (
+        <div>We don't have any reviews for this movie</div>
       )}
-      {reviews.map(({ id, author, content }) => (
-        <Item key={id}>
-          <Name>Author: {author}</Name>
-          <Content>{content}</Content>
-        </Item>
-      ))}
-    </List>
+      {reviews.length > 0 && !error && (
+        <List key={movieId}>
+          {reviews.map(({ id, author, content }) => (
+            <Item key={id}>
+              <Name>Author: {author}</Name>
+              <Content>{content}</Content>
+            </Item>
+          ))}
+        </List>
+      )}
+    </>
   );
 };
 
