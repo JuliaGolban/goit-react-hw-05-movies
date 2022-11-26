@@ -7,7 +7,7 @@ const ScrollBtn = styled.button`
   margin-left: auto;
   width: 40px;
   height: 40px;
-  color: rgba(42, 42, 42, 0.5);
+  color: #09097923;
   background-color: transparent;
   border: 0;
   cursor: pointer;
@@ -21,7 +21,7 @@ const ScrollBtn = styled.button`
     opacity: 1;
   }
   & > svg {
-    fill: #3f93b9;
+    fill: #090979;
   }
 `;
 

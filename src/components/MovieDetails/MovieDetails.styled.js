@@ -30,9 +30,6 @@ const BoxDetails = styled.div`
   align-items: center;
   gap: 20px;
   padding: 20px;
-  border: 3px solid rgba(132, 132, 132, 0.5);
-  border-radius: 4px;
-  box-shadow: 0px 7px 10px -2px rgba(132, 132, 132, 0.5);
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
@@ -122,7 +119,7 @@ const Count = styled.span`
   margin-left: 10px;
   font-size: 14px;
   font-weight: 500;
-  color: #3f93b9;
+  color: #090979;
 
   @media screen and (min-width: 768px) {
     font-size: 18px;
@@ -147,7 +144,9 @@ const ItemLink = styled(NavLink)`
   font-size: 12px;
   font-weight: 500;
   text-decoration: none;
-  color: rgb(0, 0, 0);
+  color: #fff;
+
+  background-color: #090979;
   border: 1px solid rgba(132, 132, 132, 0.5);
   border-radius: 4px;
   box-shadow: 4px 5px 10px -2px rgba(132, 132, 132, 0.5);
@@ -166,14 +165,15 @@ const ItemLink = styled(NavLink)`
   }
 
   &.active {
-    color: #fff;
-    background-color: rgba(63, 146, 185, 0.8);
+    color: #090979;
+    background-color: #fff;
+    box-shadow: 0px 7px 10px -2px rgba(132, 132, 132, 0.5) inset;
   }
   :hover:not(.active),
   :focus-visible:not(.active) {
-    color: #fff;
-    background-color: rgba(63, 146, 185, 0.8);
-    box-shadow: 4px 5px 10px -2px rgba(132, 132, 132, 0.5) inset;
+    color: #090979;
+    background-color: #fff;
+    box-shadow: 0px 7px 10px -2px rgba(132, 132, 132, 0.5) inset;
   }
 `;
 

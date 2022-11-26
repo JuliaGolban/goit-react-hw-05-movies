@@ -6,11 +6,12 @@ const SearchForm = styled.form`
   margin: 20px auto 40px;
   width: 100%;
   max-width: 300px;
-  background-color: transparent;
 
-  @media screen and (min-width: 768px) {
-    max-width: 400px;
-  }
+  background-color: transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 `;
 
 const SearchInput = styled.input`
@@ -25,9 +26,6 @@ const SearchInput = styled.input`
   outline: none;
 
   border: none;
-  border-radius: 4px;
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 
   ::placeholder {
     font: inherit;
@@ -50,7 +48,7 @@ const SearchInput = styled.input`
 const SearchBtn = styled.button`
   display: inline-block;
   text-align: center;
-  width: 70px;
+  width: 80px;
   padding: 6px;
 
   font-family: inherit;
@@ -59,12 +57,11 @@ const SearchBtn = styled.button`
   font-size: 14px;
   line-height: 1.33;
 
-  color: rgba(42, 42, 42, 0.5);
+  color: rgb(42, 42, 42);
   background-color: rgba(42, 42, 42, 0.1);
 
   text-decoration: none;
   border: 0;
-  border-radius: 4px;
   box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
     0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 
@@ -79,7 +76,7 @@ const SearchBtn = styled.button`
   :hover,
   :focus {
     color: #fff;
-    background-color: rgba(63, 146, 185, 0.8);
+    background-color: #090979;
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2) inset,
       0px 2px 2px 0px rgba(0, 0, 0, 0.14) inset,
       0px 1px 5px 0px rgba(0, 0, 0, 0.12) inset;

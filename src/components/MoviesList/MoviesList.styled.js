@@ -10,29 +10,20 @@ const List = styled.ul`
 
   margin-left: auto;
   margin-right: auto;
-
-  @media screen and (min-width: 768px) {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: auto;
-    grid-gap: 30px;
-  }
-
-  @media screen and (min-width: 1280px) {
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-auto-rows: auto;
-    grid-gap: 32px;
-  }
 `;
 
 const Item = styled.li`
-  padding: 10px;
-  width: 100%;
-  height: auto;
-  background-color: #fff;
+  padding-bottom: 5px;
+  background-color: #020024;
+  color: #fff;
   border: 3px solid rgba(132, 132, 132, 0.5);
   border-radius: 4px;
   box-shadow: 0px 7px 10px -2px rgba(132, 132, 132, 0.5);
+
+  :hover {
+    box-shadow: 0 4px 10px #000;
+    scale: 1.01;
+  }
 `;
 
 const Image = styled.img`
@@ -71,8 +62,9 @@ const Name = styled.p`
   font-size: 18px;
   font-weight: 500;
   text-align: center;
+
   @media screen and (min-width: 320px) {
-    width: 150px;
+    width: 240px;
   }
   @media screen and (min-width: 768px) {
     width: 170px;
