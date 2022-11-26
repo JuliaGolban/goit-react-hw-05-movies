@@ -27,7 +27,7 @@ const Reviews = () => {
 
   return (
     <List key={movieId}>
-      {reviews.length !== 0 && error && (
+      {reviews.length === 0 && error && (
         <p>We don't have any reviews for this movie</p>
       )}
       {reviews.map(({ id, author, content }) => (

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const ScrollBtn = styled.button`
-  position: sticky;
+  position: fixed;
   bottom: 24px;
   right: 16px;
   margin-left: auto;

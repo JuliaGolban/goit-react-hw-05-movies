@@ -65,7 +65,7 @@ const MovieDetails = () => {
               src={
                 poster_path
                   ? `https://image.tmdb.org/t/p/w500${poster_path}`
-                  : { imgDefault }
+                  : imgDefault
               }
               alt={title}
               width="240"
@@ -99,8 +99,12 @@ const MovieDetails = () => {
 
               <SubTitle>Additional information</SubTitle>
               <List>
-                <ItemLink to="cast">Cast</ItemLink>
-                <ItemLink to="reviews">Reviews</ItemLink>
+                <ItemLink to="cast" state={{ from: backLinkHref }}>
+                  Cast
+                </ItemLink>
+                <ItemLink to="reviews" state={{ from: backLinkHref }}>
+                  Reviews
+                </ItemLink>
               </List>
             </InfoWrapper>
           </BoxDetails>

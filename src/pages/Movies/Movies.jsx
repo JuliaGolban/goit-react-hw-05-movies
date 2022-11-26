@@ -3,10 +3,10 @@ import { useSearchParams } from 'react-router-dom';
 import { fetchData } from 'services/APIservice';
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import { MoviesList } from 'components/MoviesList/MoviesList';
+import { MoviesContainer, MoviesSection, Title } from './Movies.styled';
+import ScrollToTop from '../../helpers/Scroll/ScrollToTop';
 import NotiflixLoading from '../../helpers/Loader/NotiflixLoading';
 import NotifyMessages from '../../helpers/Messages/NotifyMessages';
-
-import { MoviesContainer, MoviesSection, Title } from './Movies.styled';
 
 const notify = new NotifyMessages();
 const loader = new NotiflixLoading();
@@ -19,6 +19,7 @@ const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
     if (searchQuery === '') return;
@@ -27,12 +28,12 @@ const Movies = () => {
       setIsLoading(true);
       try {
         const { data } = await fetchData(pathParams);
-
         setMovies(data.results);
-
         if (data.total_results === 0) {
           return notify.onFetchError();
         }
+
+        setShowScroll(true);
       } catch (error) {
         setError(error);
       } finally {
@@ -40,7 +41,17 @@ const Movies = () => {
       }
     }
 
+    const handleScroll = () => {
+      document.addEventListener('scroll', () => {
+        const GOLDEN_RATIO = 0.5;
+        document.documentElement.scrollTop > GOLDEN_RATIO
+          ? setShowScroll(true)
+          : setShowScroll(false);
+      });
+    };
+
     getData();
+    handleScroll();
   }, [pathParams, searchQuery]);
 
   const handleFormSubmit = searchQuery => {
@@ -64,8 +75,13 @@ const Movies = () => {
       <MoviesContainer>
         <MoviesSection>
           <Searchbar onSubmit={handleFormSubmit} />
+
           {isLoading ? loader.onLoading() : loader.onLoaded()}
-          {movies.length !== 0 && !error && <MoviesList movies={movies} />}
+
+          {movies.length > 0 && !error && <MoviesList movies={movies} />}
+
+          {showScroll && movies.length > 0 && !isLoading && <ScrollToTop />}
+
           {error && <Title> Whoops, something went wrong</Title>}
         </MoviesSection>
       </MoviesContainer>
