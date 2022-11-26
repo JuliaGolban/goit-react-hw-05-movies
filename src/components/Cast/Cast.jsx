@@ -29,26 +29,28 @@ const Cast = () => {
   return (
     <>
       {cast.length === 0 && <div>We don't have a cast for this movie</div>}
-      <List key={movieId}>
-        {cast.map(({ id, name, character, profile_path }) => (
-          <Item key={id}>
-            <Image
-              src={
-                profile_path
-                  ? `https://image.tmdb.org/t/p/w500${profile_path}`
-                  : imgDefault
-              }
-              alt={name}
-              width="100"
-              height="160"
-            />
-            <TextWrapper>
-              <Name>{name}</Name>
-              <Content>Character: {character}</Content>
-            </TextWrapper>
-          </Item>
-        ))}
-      </List>
+      {cast.length > 0 && !error && (
+        <List key={movieId}>
+          {cast.map(({ id, name, character, profile_path }) => (
+            <Item key={id}>
+              <Image
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                    : imgDefault
+                }
+                alt={name}
+                width="100"
+                height="160"
+              />
+              <TextWrapper>
+                <Name>{name}</Name>
+                <Content>Character: {character}</Content>
+              </TextWrapper>
+            </Item>
+          ))}
+        </List>
+      )}
     </>
   );
 };
