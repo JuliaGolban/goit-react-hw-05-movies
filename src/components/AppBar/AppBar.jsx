@@ -13,7 +13,7 @@ export const AppBar = () => {
               <BsHouseDoorFill size="17" />
               Home
             </Link>
-            <Link to="/movies">
+            <Link to="movies">
               <BsFilm size="13" />
               Movies
             </Link>
